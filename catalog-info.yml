@@ -1,0 +1,28 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: nativedemo-app
+  description: Microservicio con Spring Native, GraalVM y Java 23, utilizando arquitectura hexagonal.
+  tags:
+    - spring-native
+    - graalvm
+    - java23
+    - hexagonal-architecture
+spec:
+  type: service
+  lifecycle: production
+  owner: deloitte
+  system: native-services
+  repo: https://github.com/mi-org/nativedemo-repo
+  links:
+    - url: https://jenkins.mi-org.com/job/nativedemo-app/
+      title: Jenkins Pipeline
+    - url: https://grafana.mi-org.com/d/nativedemo-app
+      title: Monitoring Dashboard
+  dependsOn:
+    - apiVersion: backstage.io/v1alpha1
+      kind: Service
+      name: kafka-service
+    - apiVersion: backstage.io/v1alpha1
+      kind: Database
+      name: oracle-db
